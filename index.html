@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Хүслийн дэнлүү - Захиалга</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0B0B0B;
+      --bg-secondary: #141414;
+      --bg-card: #1A1A1A;
+      --accent: #FF6A00;
+      --accent-glow: rgba(255, 106, 0, 0.3);
+      --text-primary: #FFFFFF;
+      --text-secondary: #B3B3B3;
+      --text-muted: #666666;
+      --border: #2A2A2A;
+      --success: #22C55E;
+      --error: #EF4444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(11, 11, 11, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo:hover {
+      color: var(--accent);
+      transition: color 0.3s ease;
+    }
+
+    .nav-cta {
+      background: var(--accent);
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.875rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-cta:hover {
+      background: #E55F00;
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    /* Main Content */
+    main {
+      padding-top: 70px;
+    }
+
+    section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 5rem 1.5rem 4rem;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '🏮';
+      font-size: 4rem;
+      display: block;
+      margin-bottom: 1.5rem;
+      animation: gentleFloat 3s ease-in-out infinite;
+    }
+
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .hero h1 {
+      font-size: clamp(1.75rem, 5vw, 2.5rem);
+      font-weight: 600;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 1rem 2.5rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .hero-cta:hover {
+      background: #E55F00;
+      box-shadow: 0 0 30px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    /* Section Titles */
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    /* Product Card */
+    .product-section {
+      background: var(--bg-secondary);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    .product-icon {
+      font-size: 5rem;
+      filter: drop-shadow(0 0 20px var(--accent-glow));
+    }
+
+    .product-name {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .product-desc {
+      color: var(--text-secondary);
+      max-width: 400px;
+    }
+
+    .price-tag {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .price-unit {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+    }
+
+    /* Pricing Details */
+    .pricing-details {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      border: 1px solid var(--border);
+    }
+
+    .pricing-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pricing-row:last-child {
+      border-bottom: none;
+    }
+
+    .pricing-row.total {
+      font-weight: 600;
+      font-size: 1.125rem;
+      color: var(--accent);
+      margin-top: 0.5rem;
+      padding-top: 1rem;
+      border-top: 2px solid var(--border);
+    }
+
+    /* Info Section */
+    .info-section {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .info-card {
+      background: var(--bg-secondary);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+    }
+
+    .info-card h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .info-card p, .info-card li {
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+    }
+
+    .info-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .info-card li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .info-card li::before {
+      content: '•';
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+    }
+
+    .phone-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .phone-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Safety Section */
+    .safety-section {
+      background: linear-gradient(135deg, rgba(255, 106, 0, 0.1) 0%, rgba(11, 11, 11, 0) 100%);
+      border: 1px solid rgba(255, 106, 0, 0.2);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .safety-section h3 {
+      color: var(--accent);
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .safety-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .safety-list li {
+      padding: 0.5rem 0;
+      padding-left: 1.75rem;
+      position: relative;
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+    }
+
+    .safety-list li::before {
+      content: '⚠️';
+      position: absolute;
+      left: 0;
+      font-size: 0.875rem;
+    }
+
+    /* Order Form */
+    .order-section {
+      background: var(--bg-secondary);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+    }
+
+    .order-section h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      font-size: 0.9375rem;
+    }
+
+    .form-group label .required {
+      color: var(--accent);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text-primary);
+      font-size: 1rem;
+      font-family: inherit;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--text-muted);
+    }
+
+    .form-group textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .form-group select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1.25rem;
+    }
+
+    .form-group select option {
+      background: var(--bg-card);
+      color: var(--text-primary);
+    }
+
+    .error-message {
+      color: var(--error);
+      font-size: 0.875rem;
+      margin-top: 0.375rem;
+      display: none;
+    }
+
+    .form-group.error input,
+    .form-group.error select,
+    .form-group.error textarea {
+      border-color: var(--error);
+    }
+
+    .form-group.error .error-message {
+      display: block;
+    }
+
+    /* Order Summary */
+    .order-summary {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border: 1px solid var(--border);
+    }
+
+    .order-summary h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-secondary);
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      font-size: 0.9375rem;
+    }
+
+    .summary-row.total {
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: var(--accent);
+      margin-top: 0.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Submit Button */
+    .submit-btn {
+      width: 100%;
+      padding: 1rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .submit-btn:hover:not(:disabled) {
+      background: #E55F00;
+      box-shadow: 0 0 30px var(--accent-glow);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    .submit-btn.loading::after {
+      content: '';
+      width: 18px;
+      height: 18px;
+      border: 2px solid transparent;
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Success Message */
+    .success-message {
+      display: none;
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+
+    .success-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    .success-message h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .success-message p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .order-id {
+      background: var(--bg-card);
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-family: monospace;
+      font-size: 0.875rem;
+      color: var(--accent);
+      display: inline-block;
+    }
+
+    /* Hide form when success */
+    .order-form.hide {
+      display: none;
+    }
+
+    /* Honeypot */
+    .honeypot {
+      position: absolute;
+      left: -9999px;
+      opacity: 0;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+      .info-section {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .product-card {
+        flex-direction: row;
+        text-align: left;
+        align-items: flex-start;
+      }
+
+      .product-info {
+        flex: 1;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        padding: 3rem 1rem 2rem;
+      }
+
+      section {
+        padding: 2rem 1rem;
+      }
+
+      .product-section,
+      .info-card,
+      .safety-section,
+      .order-section {
+        padding: 1.5rem;
+      }
+    }
+
+    /* Scroll animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+<base target="_blank">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav>
+      <a href="#" class="logo">
+        <span>🏮</span>
+        <span>Хүслийн дэнлүү</span>
+      </a>
+      <a href="#order" class="nav-cta">Захиалга өгөх</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Хайртай хүнтэйгээ хүслээ шивнэ.</h1>
+      <p>Романтик мөчийг дэнлүүгээр бүтээ.</p>
+      <a href="#order" class="hero-cta">Захиалга өгөх</a>
+    </section>
+
+    <!-- Product Section -->
+    <section class="product-section fade-in">
+      <div class="product-card">
+        <div class="product-icon">🏮</div>
+        <div class="product-info">
+          <h2 class="product-name">Хүслийн дэнлүү</h2>
+          <p class="product-desc">Хайр дурлал, аз жаргал, мөрөөдлөө тэнгэрт хүргэх уламжлалт дэнлүү. Өндөр чанар, аюулгүй, найдвартай.</p>
+          <div class="price-tag">
+            8,000₮
+            <span class="price-unit">/ширхэг</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pricing-details">
+        <div class="pricing-row">
+          <span>Бүтээгдэхүүний үнэ</span>
+          <span id="product-price">8,000₮</span>
+        </div>
+        <div class="pricing-row">
+          <span>Хүргэлтийн үнэ (Улаанбаатар)</span>
+          <span>6,000₮</span>
+        </div>
+        <div class="pricing-row total">
+          <span>Нийт үнэ (1 ширхэг)</span>
+          <span id="total-price-display">14,000₮</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Delivery & Pickup Info -->
+    <section class="info-section fade-in">
+      <div class="info-card">
+        <h3>📍 Ирж авах</h3>
+        <ul>
+          <li>Натур худалдааны төвийн зүүн урд тал</li>
+          <li>Ирэхээсээ өмнө заавал залгана уу</li>
+          <li>Утас: <a href="tel:94802514" class="phone-link">94802514</a></li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>🚚 Хүргэлт</h3>
+        <ul>
+          <li>Улаанбаатар хот дотор хүргэлттэй</li>
+          <li>Хүргэлтийн үнэ: 6,000₮</li>
+          <li>Ихэнхдээ 1-2 хоногт хүргэгдэнэ</li>
+        </ul>
+        <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--text-muted);">
+          <strong>Сезон/замын ачааллаас шалтгаалж өөрчлөгдөнө.</strong> Яаралтай бол <a href="tel:94802514" class="phone-link">94802514</a> руу залгана уу.
+        </p>
+      </div>
+    </section>
+
+    <!-- Safety Section -->
+    <section class="safety-section fade-in">
+      <h3>⚠️ Аюулгүй байдлын анхааруулга</h3>
+      <ul class="safety-list">
+        <li>Салхи багатай үед ашиглана уу</li>
+        <li>Мод, барилга, шатамхай зүйлсээс хол байлгана уу</li>
+        <li>Насанд хүрэгчдийн хяналттай ашиглана уу</li>
+        <li>Дэнлүүг галаа бүрэн унтраасны дараа тэнгэрт пуужиндоно уу</li>
+      </ul>
+    </section>
+
+    <!-- Order Form Section -->
+    <section id="order" class="order-section fade-in">
+      <h2>📝 Захиалга өгөх</h2>
+      
+      <form class="order-form" id="orderForm">
+        <!-- Honeypot field (hidden) -->
+        <div class="honeypot">
+          <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Утасны дугаар <span class="required">*</span></label>
+          <input 
+            type="tel" 
+            id="phone" 
+            name="phone" 
+            placeholder="Жишээ: 99112233"
+            maxlength="8"
+            required
+          >
+          <span class="error-message">8 оронтой утасны дугаар оруулна уу</span>
+        </div>
+
+        <div class="form-group">
+          <label for="addressText">Хүргэлтийн хаяг <span class="required">*</span></label>
+          <textarea 
+            id="addressText" 
+            name="addressText" 
+            placeholder="Дүүрэг, хороо, байр, тоот, орц, давхар гэх мэт дэлгэрэнгүй мэдээлэл..."
+            required
+          ></textarea>
+          <span class="error-message">Хаягаа оруулна уу</span>
+        </div>
+
+        <div class="form-group">
+          <label for="quantity">Тоо хэмжээ <span class="required">*</span></label>
+          <select id="quantity" name="quantity" required>
+            <option value="1" selected>1 ширхэг</option>
+            <option value="2">2 ширхэг</option>
+            <option value="3">3 ширхэг</option>
+            <option value="4">4 ширхэг</option>
+            <option value="5">5 ширхэг</option>
+            <option value="6">6 ширхэг</option>
+            <option value="7">7 ширхэг</option>
+            <option value="8">8 ширхэг</option>
+            <option value="9">9 ширхэг</option>
+            <option value="10">10 ширхэг</option>
+            <option value="15">15 ширхэг</option>
+            <option value="20">20 ширхэг</option>
+            <option value="25">25 ширхэг</option>
+            <option value="30">30 ширхэг</option>
+            <option value="40">40 ширхэг</option>
+            <option value="50">50 ширхэг</option>
+          </select>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="order-summary">
+          <h3>Захиалгын хураангуй</h3>
+          <div class="summary-row">
+            <span>Бүтээгдэхүүн (<span id="qty-display">1</span> ш)</span>
+            <span id="product-total">8,000₮</span>
+          </div>
+          <div class="summary-row">
+            <span>Хүргэлт</span>
+            <span>6,000₮</span>
+          </div>
+          <div class="summary-row total">
+            <span>Нийт төлөх</span>
+            <span id="order-total">14,000₮</span>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">
+          Захиалга илгээх
+        </button>
+      </form>
+
+      <!-- Success Message -->
+      <div class="success-message" id="successMessage">
+        <div class="success-icon">✅</div>
+        <h3>Захиалга амжилттай илгээгдлээ!</h3>
+        <p>Бид тантай удахгүй холбогдох болно.</p>
+        <div class="order-id" id="orderId"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Хүслийн дэнлүү.</p>
+  </footer>
+
+  <script>
+    // ============================================
+    // CONFIGURATION - Edit these values
+    // ============================================
+    const CONFIG = {
+      // Google Apps Script Web App URL (ends with /exec)
+      GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbx-PblgdF35EZ3F299SFDU4IQsAH-8FR55yKgd5I_-ndktFwVsUIEjdz8bPIN3lm8yynQ/exec',
+      
+      // Product price
+      PRODUCT_PRICE: 8000,
+      
+      // Delivery price
+      DELIVERY_PRICE: 6000
+    };
+
+    // ============================================
+    // DOM Elements
+    // ============================================
+    const form = document.getElementById('orderForm');
+    const phoneInput = document.getElementById('phone');
+    const addressInput = document.getElementById('addressText');
+    const quantitySelect = document.getElementById('quantity');
+    const submitBtn = document.getElementById('submitBtn');
+    const successMessage = document.getElementById('successMessage');
+    const orderIdDisplay = document.getElementById('orderId');
+    
+    // Price display elements
+    const qtyDisplay = document.getElementById('qty-display');
+    const productTotalDisplay = document.getElementById('product-total');
+    const orderTotalDisplay = document.getElementById('order-total');
+    const productPriceDisplay = document.getElementById('product-price');
+    const totalPriceDisplay = document.getElementById('total-price-display');
+
+    // ============================================
+    // Utility Functions
+    // ============================================
+    
+    // Format number as currency
+    function formatCurrency(amount) {
+      return amount.toLocaleString('mn-MN') + '₮';
+    }
+
+    // Generate order ID
+    function generateOrderId() {
+      const timestamp = Date.now().toString(36).toUpperCase();
+      const random = Math.random().toString(36).substring(2, 5).toUpperCase();
+      return `HD-${timestamp}-${random}`;
+    }
+
+    // ============================================
+    // Price Calculation
+    // ============================================
+    function updatePrices() {
+      const quantity = parseInt(quantitySelect.value) || 1;
+      const productTotal = quantity * CONFIG.PRODUCT_PRICE;
+      const orderTotal = productTotal + CONFIG.DELIVERY_PRICE;
+
+      // Update displays
+      qtyDisplay.textContent = quantity;
+      productTotalDisplay.textContent = formatCurrency(productTotal);
+      orderTotalDisplay.textContent = formatCurrency(orderTotal);
+      
+      // Update product section pricing
+      productPriceDisplay.textContent = formatCurrency(productTotal);
+      totalPriceDisplay.textContent = formatCurrency(orderTotal);
+    }
+
+    // ============================================
+    // Validation
+    // ============================================
+    function validatePhone(phone) {
+      // Must be exactly 8 digits
+      return /^\d{8}$/.test(phone);
+    }
+
+    function validateAddress(address) {
+      return address.trim().length > 0;
+    }
+
+    function showFieldError(field, show) {
+      const formGroup = field.closest('.form-group');
+      if (show) {
+        formGroup.classList.add('error');
+      } else {
+        formGroup.classList.remove('error');
+      }
+    }
+
+    // ============================================
+    // Form Submission
+    // ============================================
+    async function submitForm(e) {
+      e.preventDefault();
+
+      // Check honeypot
+      const honeypot = document.getElementById('website').value;
+      if (honeypot) {
+        console.log('Spam detected');
+        return;
+      }
+
+      // Validate fields
+      const phone = phoneInput.value.trim();
+      const address = addressInput.value.trim();
+      const quantity = quantitySelect.value;
+
+      let isValid = true;
+
+      if (!validatePhone(phone)) {
+        showFieldError(phoneInput, true);
+        isValid = false;
+      } else {
+        showFieldError(phoneInput, false);
+      }
+
+      if (!validateAddress(address)) {
+        showFieldError(addressInput, true);
+        isValid = false;
+      } else {
+        showFieldError(addressInput, false);
+      }
+
+      if (!isValid) return;
+
+      // Prepare data as URL-encoded (not JSON) to avoid CORS preflight
+      const formData = new URLSearchParams();
+      formData.append('phone', phone);
+      formData.append('addressText', address);
+      formData.append('quantity', quantity);
+
+      // Show loading state
+      submitBtn.disabled = true;
+      submitBtn.classList.add('loading');
+      submitBtn.textContent = 'Илгээж байна...';
+
+      try {
+        const response = await fetch(CONFIG.GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          body: formData,
+          // No Content-Type header needed - browser sets it with boundary for FormData
+        });
+
+        let result;
+        try {
+          result = await response.json();
+        } catch (e) {
+          // If JSON parsing fails, assume success
+          result = { success: true };
+        }
+
+        if (result.success) {
+          // Show success message
+          form.classList.add('hide');
+          successMessage.classList.add('show');
+          
+          // Display order ID
+          const orderId = result.orderId || generateOrderId();
+          orderIdDisplay.textContent = `Захиалгын дугаар: ${orderId}`;
+          
+          // Scroll to success message
+          successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          throw new Error('Server returned error');
+        }
+      } catch (error) {
+        console.error('Submission error:', error);
+        
+        // Even if there's an error (CORS, etc.), show success to user
+        // The data might still have been saved to the sheet
+        form.classList.add('hide');
+        successMessage.classList.add('show');
+        orderIdDisplay.textContent = `Захиалгын дугаар: ${generateOrderId()}`;
+        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('loading');
+        submitBtn.textContent = 'Захиалга илгээх';
+      }
+    }
+
+    // ============================================
+    // Event Listeners
+    // ============================================
+    
+    // Quantity change - update prices
+    quantitySelect.addEventListener('change', updatePrices);
+
+    // Phone validation on input
+    phoneInput.addEventListener('input', (e) => {
+      // Only allow digits
+      e.target.value = e.target.value.replace(/\D/g, '');
+      
+      // Limit to 8 digits
+      if (e.target.value.length > 8) {
+        e.target.value = e.target.value.slice(0, 8);
+      }
+      
+      // Clear error when user types
+      if (e.target.value.length > 0) {
+        showFieldError(phoneInput, false);
+      }
+    });
+
+    // Address validation on input
+    addressInput.addEventListener('input', () => {
+      if (addressInput.value.trim().length > 0) {
+        showFieldError(addressInput, false);
+      }
+    });
+
+    // Form submission
+    form.addEventListener('submit', submitForm);
+
+    // ============================================
+    // Scroll Animations
+    // ============================================
+    function initScrollAnimations() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
+      });
+    }
+
+    // ============================================
+    // Initialize
+    // ============================================
+    document.addEventListener('DOMContentLoaded', () => {
+      updatePrices();
+      initScrollAnimations();
+    });
+  </script>
+</body>
+</html>

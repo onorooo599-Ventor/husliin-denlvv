@@ -555,7 +555,7 @@
     /* Responsive */
     @media (min-width: 768px) {
       .info-section {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
       }
 
       .product-card {
@@ -588,8 +588,8 @@
 
     /* Scroll animations */
     .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
+      opacity: 1;
+      transform: none;
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
@@ -598,7 +598,7 @@
       transform: translateY(0);
     }
   </style>
-<base target="_blank">
+
 </head>
 <body>
   <!-- Header -->
@@ -626,9 +626,9 @@
         <div class="product-icon">🏮</div>
         <div class="product-info">
           <h2 class="product-name">Хүслийн дэнлүү</h2>
-          <p class="product-desc">Хайр дурлал, аз жаргал, мөрөөдлөө тэнгэрт хүргэх уламжлалт дэнлүү. Өндөр чанар, аюулгүй, найдвартай.</p>
+          <p class="product-desc">Хайртай хүнтэйгээ хүслээ хуваалцаж, хамтдаа дурсамж бүтээх дэнлүү.</p>
           <div class="price-tag">
-            8,000₮
+            9,000₮
             <span class="price-unit">/ширхэг</span>
           </div>
         </div>
@@ -637,41 +637,41 @@
       <div class="pricing-details">
         <div class="pricing-row">
           <span>Бүтээгдэхүүний үнэ</span>
-          <span id="product-price">8,000₮</span>
+          <span id="product-price">9,000₮</span>
         </div>
         <div class="pricing-row">
           <span>Хүргэлтийн үнэ (Улаанбаатар)</span>
-          <span>6,000₮</span>
+          <span class="delivery-amount">7,000₮</span>
         </div>
         <div class="pricing-row total">
-          <span>Нийт үнэ (1 ширхэг)</span>
-          <span id="total-price-display">14,000₮</span>
+          <span>Нийт үнэ (<span id="pricing-quantity">1</span> ширхэг)</span>
+          <span id="total-price-display">16,000₮</span>
         </div>
       </div>
     </section>
 
-    <!-- Delivery & Pickup Info -->
-    <section class="info-section fade-in">
+    <section class="info-section">
       <div class="info-card">
-        <h3>📍 Ирж авах</h3>
+        <h3>🚚 Зөвхөн хүргэлтээр үйлчилнэ</h3>
         <ul>
-          <li>Натур худалдааны төвийн зүүн урд тал</li>
-          <li>Ирэхээсээ өмнө заавал залгана уу</li>
-          <li>Утас: <a href="tel:94802514" class="phone-link">94802514</a></li>
+          <li>Улаанбаатар хотод хүргэнэ.</li>
+          <li>1–3 ширхэгийн захиалгын хүргэлт: 7,000₮.</li>
+          <li>4 болон түүнээс дээш ширхэг захиалбал хүргэлт үнэгүй.</li>
+          <li>Захиалсан өдрийн маргаашид багтаан хүргэнэ.</li>
         </ul>
+        <p>Лавлах утас: <a href="tel:94802514" class="phone-link">94802514</a></p>
       </div>
+    </section>
 
-      <div class="info-card">
-        <h3>🚚 Хүргэлт</h3>
-        <ul>
-          <li>Улаанбаатар хот дотор хүргэлттэй</li>
-          <li>Хүргэлтийн үнэ: 6,000₮</li>
-          <li>Ихэнхдээ 1-2 хоногт хүргэгдэнэ</li>
-        </ul>
-        <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--text-muted);">
-          <strong>Сезон/замын ачааллаас шалтгаалж өөрчлөгдөнө.</strong> Яаралтай бол <a href="tel:94802514" class="phone-link">94802514</a> руу залгана уу.
-        </p>
+    <!-- Instruction video -->
+    <section id="instructions" class="info-card" aria-labelledby="instructions-title">
+      <h2 id="instructions-title" class="section-title">Дэнлүү хэрэглэх заавар</h2>
+      <p style="text-align:center;color:var(--text-secondary);margin-bottom:1rem">Хэрэглэхийн өмнө заавар бичлэгийг үзэж, аюулгүй байдлын анхааруулгатай танилцана уу.</p>
+      <div style="max-width:480px;margin:0 auto">
+        <iframe src="https://www.instagram.com/reel/DX7Aq9fTEGj/embed/" title="Хүслийн дэнлүү хэрэглэх заавар — Instagram бичлэг" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen style="display:block;width:100%;height:640px;max-height:80vh;border:1px solid var(--border);border-radius:12px;background:var(--bg-card)"></iframe>
       </div>
+      <p style="text-align:center;margin:1.25rem 0;color:var(--text-secondary)">Бичлэг харагдахгүй байвал доорх товчийг дарж үзнэ үү.</p>
+      <div style="text-align:center"><a class="hero-cta" href="https://www.instagram.com/reel/DX7Aq9fTEGj/" target="_blank" rel="noopener noreferrer">Instagram дээр заавар үзэх ↗</a></div>
     </section>
 
     <!-- Safety Section -->
@@ -680,8 +680,8 @@
       <ul class="safety-list">
         <li>Салхи багатай үед ашиглана уу</li>
         <li>Мод, барилга, шатамхай зүйлсээс хол байлгана уу</li>
-        <li>Насанд хүрэгчдийн хяналттай ашиглана уу</li>
-        <li>Дэнлүүг галаа бүрэн унтраасны дараа тэнгэрт пуужиндоно уу</li>
+        <li>Насанд хүрсэн хүн хариуцан ашиглана уу</li>
+        <li>Хэрэглэхийн өмнө бүтээгдэхүүний зааврыг бүрэн уншина уу</li>
       </ul>
     </section>
 
@@ -690,8 +690,10 @@
       <h2>📝 Захиалга өгөх</h2>
       
       <form class="order-form" id="orderForm">
+        <p style="margin-bottom:1.5rem;color:var(--text-secondary)">Улаанбаатарын хүргэлтийн захиалга. 4 ширхэгээс хүргэлт үнэгүй.</p>
+        <p id="submission-error" role="alert" hidden style="color:var(--error);margin-bottom:1rem"></p>
         <!-- Honeypot field (hidden) -->
-        <div class="honeypot">
+        <div class="honeypot" aria-hidden="true">
           <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
         </div>
 
@@ -703,6 +705,9 @@
             name="phone" 
             placeholder="Жишээ: 99112233"
             maxlength="8"
+            inputmode="numeric"
+            autocomplete="tel"
+            pattern="[0-9]{8}"
             required
           >
           <span class="error-message">8 оронтой утасны дугаар оруулна уу</span>
@@ -711,7 +716,9 @@
         <div class="form-group">
           <label for="addressText">Хүргэлтийн хаяг <span class="required">*</span></label>
           <textarea 
-            id="addressText" 
+            id="addressText"
+            autocomplete="street-address"
+            maxlength="1000" 
             name="addressText" 
             placeholder="Дүүрэг, хороо, байр, тоот, орц, давхар гэх мэт дэлгэрэнгүй мэдээлэл..."
             required
@@ -720,7 +727,7 @@
         </div>
 
         <div class="form-group">
-          <label for="quantity">Тоо хэмжээ <span class="required">*</span></label>
+          <label for="quantity">Тоо ширхэг <span class="required">*</span></label>
           <select id="quantity" name="quantity" required>
             <option value="1" selected>1 ширхэг</option>
             <option value="2">2 ширхэг</option>
@@ -746,15 +753,15 @@
           <h3>Захиалгын хураангуй</h3>
           <div class="summary-row">
             <span>Бүтээгдэхүүн (<span id="qty-display">1</span> ш)</span>
-            <span id="product-total">8,000₮</span>
+            <span id="product-total">9,000₮</span>
           </div>
           <div class="summary-row">
             <span>Хүргэлт</span>
-            <span>6,000₮</span>
+            <span class="delivery-amount">7,000₮</span>
           </div>
           <div class="summary-row total">
             <span>Нийт төлөх</span>
-            <span id="order-total">14,000₮</span>
+            <span id="order-total">16,000₮</span>
           </div>
         </div>
 
@@ -764,7 +771,7 @@
       </form>
 
       <!-- Success Message -->
-      <div class="success-message" id="successMessage">
+      <div class="success-message" id="successMessage" role="status" aria-live="polite">
         <div class="success-icon">✅</div>
         <h3>Захиалга амжилттай илгээгдлээ!</h3>
         <p>Бид тантай удахгүй холбогдох болно.</p>
@@ -787,10 +794,11 @@
       GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbx-PblgdF35EZ3F299SFDU4IQsAH-8FR55yKgd5I_-ndktFwVsUIEjdz8bPIN3lm8yynQ/exec',
       
       // Product price
-      PRODUCT_PRICE: 8000,
+      PRODUCT_PRICE: 9000,
       
       // Delivery price
-      DELIVERY_PRICE: 6000
+      DELIVERY_PRICE: 7000,
+      FREE_DELIVERY_FROM: 4
     };
 
     // ============================================
@@ -820,12 +828,6 @@
       return amount.toLocaleString('mn-MN') + '₮';
     }
 
-    // Generate order ID
-    function generateOrderId() {
-      const timestamp = Date.now().toString(36).toUpperCase();
-      const random = Math.random().toString(36).substring(2, 5).toUpperCase();
-      return `HD-${timestamp}-${random}`;
-    }
 
     // ============================================
     // Price Calculation
@@ -833,7 +835,10 @@
     function updatePrices() {
       const quantity = parseInt(quantitySelect.value) || 1;
       const productTotal = quantity * CONFIG.PRODUCT_PRICE;
-      const orderTotal = productTotal + CONFIG.DELIVERY_PRICE;
+      const delivery = quantity >= CONFIG.FREE_DELIVERY_FROM ? 0 : CONFIG.DELIVERY_PRICE;
+      const orderTotal = productTotal + delivery;
+      document.querySelectorAll('.delivery-amount').forEach(el => el.textContent = delivery === 0 ? 'Үнэгүй (0₮)' : formatCurrency(delivery));
+      document.getElementById('pricing-quantity').textContent = quantity;
 
       // Update displays
       qtyDisplay.textContent = quantity;
@@ -882,7 +887,11 @@
       // Validate fields
       const phone = phoneInput.value.trim();
       const address = addressInput.value.trim();
-      const quantity = quantitySelect.value;
+      const quantity = Number(quantitySelect.value);
+      const allowed = Array.from(quantitySelect.options, option => Number(option.value));
+      if (!Number.isInteger(quantity) || !allowed.includes(quantity)) return;
+      const errorDisplay = document.getElementById('submission-error');
+      errorDisplay.hidden = true;
 
       let isValid = true;
 
@@ -907,6 +916,7 @@
       formData.append('phone', phone);
       formData.append('addressText', address);
       formData.append('quantity', quantity);
+      // The server must calculate authoritative prices using the same policy.
 
       // Show loading state
       submitBtn.disabled = true;
@@ -920,13 +930,8 @@
           // No Content-Type header needed - browser sets it with boundary for FormData
         });
 
-        let result;
-        try {
-          result = await response.json();
-        } catch (e) {
-          // If JSON parsing fails, assume success
-          result = { success: true };
-        }
+        if (!response.ok) throw new Error('HTTP error');
+        const result = await response.json();
 
         if (result.success) {
           // Show success message
@@ -934,8 +939,7 @@
           successMessage.classList.add('show');
           
           // Display order ID
-          const orderId = result.orderId || generateOrderId();
-          orderIdDisplay.textContent = `Захиалгын дугаар: ${orderId}`;
+          orderIdDisplay.textContent = result.orderId ? `Захиалгын дугаар: ${result.orderId}` : 'Захиалгын мэдээллийг хүлээн авлаа.';
           
           // Scroll to success message
           successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -945,12 +949,9 @@
       } catch (error) {
         console.error('Submission error:', error);
         
-        // Even if there's an error (CORS, etc.), show success to user
-        // The data might still have been saved to the sheet
-        form.classList.add('hide');
-        successMessage.classList.add('show');
-        orderIdDisplay.textContent = `Захиалгын дугаар: ${generateOrderId()}`;
-        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        errorDisplay.textContent = 'Захиалга бүртгэгдсэн эсэхийг баталгаажуулж чадсангүй. Давтан илгээхээс өмнө 94802514 дугаараар лавлана уу.';
+        errorDisplay.hidden = false;
+        errorDisplay.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } finally {
         submitBtn.disabled = false;
         submitBtn.classList.remove('loading');
@@ -995,6 +996,7 @@
     // Scroll Animations
     // ============================================
     function initScrollAnimations() {
+      if (!('IntersectionObserver' in window)) return;
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
